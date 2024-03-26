@@ -2,3 +2,5 @@ behave
 pytest
 pytest-playwright
 behave
+pytest
+pytest-playwright
