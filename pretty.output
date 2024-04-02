@@ -1,0 +1,18 @@
+Feature: Applying for a Job # features/feature_files/fourthtest.feature:1
+  In order to apply for a job
+  As a user
+  I want to click the apply button on a job listing
+  Scenario: User clicks apply on a job listing after searching for 'test automation'  # features/feature_files/fourthtest.feature:6
+    Given the user is on the compare the market home page                             # features/feature_files/steps/fourthtest.py:19
+    When the user searches for the registration "WF18KZS"                             # features/feature_files/steps/fourthtest.py:56
+
+  Scenario: User searches for a job title                                      # features/feature_files/fourthtest.feature:20
+    Given the user is on the job listings page                                 # None
+    When the user searches for "test automation"                               # None
+    Then all job listings with the title "test automation" should be displayed # None
+
+  Scenario: User refines job search                                    # features/feature_files/fourthtest.feature:26
+    Given the user is on the job listings page                         # None
+    When the user sets a filter on the sidebar                         # None
+    Then the job listings should be updated to reflect the filters set # None
+
