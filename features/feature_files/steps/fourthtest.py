@@ -30,7 +30,7 @@ def step_vehicle_details_page_opens(context):
 def step_user_searches_for_registration(context, registration):
     context.home_page.click_compare_car_insurance_button()
     context.home_page.fill_car_registration_field(registration)
-    time.sleep(15)
+    #time.sleep(1)
 
 
 @then('all job listings with the title "test automation" should be displayed')

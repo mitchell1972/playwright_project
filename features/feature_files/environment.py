@@ -1,3 +1,5 @@
+import os
+
 from playwright.sync_api import sync_playwright
 
 
@@ -16,6 +18,18 @@ def before_scenario(context, scenario):
 
 
 def after_scenario(context, scenario):
+    if scenario.status == "failed":
+        # Ensure the screenshots directory exists
+        if not os.path.exists('screenshots'):
+            os.makedirs('screenshots')
+
+        # Replace any characters in the scenario name that might be invalid in a file name
+        filename = scenario.name.replace(' ', '_').replace('/', '_').replace('\\', '_') + '.png'
+        screenshot_path = f"screenshots/{filename}"
+        context.page.screenshot(path=screenshot_path)
+        print(f"Screenshot taken for failed scenario: {scenario.name}")
+
+    # Close the current page after each scenario
     context.page.close()
 
 

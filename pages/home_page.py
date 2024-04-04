@@ -48,7 +48,7 @@ class HomePage:
 
         # Click on the button
         self.page.click(button_selector)
-        time.sleep(5)
+        time.sleep(0.5)
 
     def click_apply_button(self):
         self.page.click('text="Apply"')
