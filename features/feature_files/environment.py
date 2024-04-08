@@ -1,6 +1,8 @@
+import base64
 import os
-
 from playwright.sync_api import sync_playwright
+from allure_commons.types import AttachmentType
+import allure
 
 
 def before_all(context):
@@ -15,6 +17,14 @@ def before_all(context):
 
 def before_scenario(context, scenario):
     context.page = context.context.new_page()
+
+
+def after_step(context, step):
+    if step.status == "failed":
+        # Assuming `context.page` is your Playwright page instance
+        screenshot_bytes = context.page.screenshot()
+        # Attach the screenshot to Allure results
+        allure.attach(screenshot_bytes, name="screenshot", attachment_type=AttachmentType.PNG)
 
 
 def after_scenario(context, scenario):

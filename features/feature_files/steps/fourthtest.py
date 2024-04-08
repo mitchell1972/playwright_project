@@ -11,7 +11,7 @@ from pages.pagination_utility import PaginationUtility
 def step_user_is_on_home_page(context):
     context.home_page = HomePage(context.page)
     context.home_page.navigate_to_comparethemarket_homepage()
-    expected_url = "https://www.comparethemarket.com/"
+    expected_url = "https://www.comparethemarke.com/"
     current_url = context.page.url
     assert expected_url in current_url, f"Expected URL to be {expected_url}, but got {current_url}"
 
